@@ -23,15 +23,18 @@ resource "azurerm_resource_group" "rg_acr" {
   
 }
 
-#deploy the acr resource on the rg created
+#deploy the acr resource on the rg created with the admin enabled
 resource "azurerm_container_registry" "acr" {
-    name = "acrlab"
+    name = "acrlabfran"
     resource_group_name = var.rg_acr
     location = var.location
     sku = "Basic"
+    admin_enabled = true
 
   
 }
+
+
 
 #Once the resources are defined lets run tf plan
 
