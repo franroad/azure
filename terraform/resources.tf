@@ -159,6 +159,7 @@ resource "azurerm_linux_virtual_machine" "vm-web" {
     version   = "latest"
   }
 
+#con esta config nos conectamos como azureuser a la VM con las claves generadas anteriormente en local
   computer_name                   = "vm-web"
   admin_username                  = "azureuser"
   disable_password_authentication = true
