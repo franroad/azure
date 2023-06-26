@@ -50,12 +50,124 @@ resource "azurerm_subnet" "subnet_prac2" {
   
 }
 
-#create a nsg to manage the connectivity of the resources
+#create a nsg to manage the connectivity of the resources, adding the ssh rule to acces the vm
 resource "azurerm_network_security_group" "prac2_nsg" {
   name = var.nsg
   location = var.location
   resource_group_name = var.rg_compute
+
+  security_rule {
+    name                       = "conexion_ssh"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
   
+}
+
+#Creamos 2 public ip's para las maquinas
+
+ 
+
+# Create public IPs
+resource "azurerm_public_ip" "publicipweb" {
+
+  name                = "pulicip-web"
+  location            = var.location
+  resource_group_name = var.rg_compute
+  allocation_method   = "Dynamic"
+}
+
+resource "azurerm_public_ip" "publicipansible" {
+
+  name                = "pulicip-ansible"
+  location            = var.location
+  resource_group_name = var.rg_compute
+  allocation_method   = "Dynamic"
+}
+
+#creamos la nic para la VM de ansible y para la vm web y les atacheamos public ip's
+resource "azurerm_network_interface" "nic_web" {
+    name = "nic-web"
+    location = var.location
+    resource_group_name = var.rg_compute
+
+    ip_configuration {
+        name = "nic-web-config"
+        subnet_id=azurerm_subnet.subnet_prac2.id
+        private_ip_address_allocation = "Dynamic"
+        public_ip_address_id = azurerm_public_ip.publicipweb.id
+      
+    }  
+}
+
+resource "azurerm_network_interface" "nic_ansible" {
+    name = "nic-ansible"
+    location = var.location
+    resource_group_name = var.rg_compute
+
+    ip_configuration {
+        name = "nic-ansible-config"
+        subnet_id=azurerm_subnet.subnet_prac2.id
+        private_ip_address_allocation = "Dynamic"
+        public_ip_address_id = azurerm_public_ip.publicipansible.id
+      
+    }
+}
+
+#añadimos las dos nics al Sg
+
+resource "azurerm_network_interface_security_group_association" "web-nic" {
+    network_interface_id = azurerm_network_interface.nic_web.id
+    network_security_group_id = azurerm_network_security_group.prac2_nsg.id
+  
+}
+
+resource "azurerm_network_interface_security_group_association" "ansible-nic" {
+    network_interface_id = azurerm_network_interface.nic_ansible.id
+    network_security_group_id = azurerm_network_security_group.prac2_nsg.id
+  
+}
+
+#creamos una clave ssh con ssh-keygen en el terminal local
+#
+
+#creamos la vm web
+
+resource "azurerm_linux_virtual_machine" "vm-web" {
+  name                  = "vm-web"
+  location              = var.location
+  resource_group_name   = var.rg_compute
+  network_interface_ids = [azurerm_network_interface.nic_web.id]
+  size                  = "Standard_B1ms"
+
+  os_disk {
+    name                 = "myOsDisk"
+    caching              = "ReadWrite"
+    storage_account_type = "Premium_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-focal"
+    sku       = "20_04-lts"
+    version   = "latest"
+  }
+
+  computer_name                   = "vm-web"
+  admin_username                  = "azureuser"
+  disable_password_authentication = true
+
+  admin_ssh_key {
+    username   = "azureuser"
+    public_key = file("C:/Users/Fran/.ssh/id_rsa.pub")
+  }
+
 }
 
 
