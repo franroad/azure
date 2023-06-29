@@ -69,7 +69,7 @@ podman push acrlabfran.azurecr.io/nginx:casopractico2
 
 
 ````
-Graphically the outoput of this process looks like this:
+Visually after pushing the image, our repository looks like this:
 
 https://github.com/franroad/azure/issues/1#issue-1781554075
 
