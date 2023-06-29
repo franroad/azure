@@ -9,6 +9,7 @@ Using the Terraform file the resources that I am deploying are the following:
 ```#0969DA python
 
 I am currently finalizing the Terraform:
+print:
 
 with the desired resources, these can be found: https://github.com/franroad/azure/tree/main/terraform
 ````
