@@ -8,7 +8,9 @@ Using the Terraform file the resources that I am deploying are the following:
 -AKS (persistent volume)
 ```#0969DA python
 
-I am currently finalizing the Terraform with the desired resources, these can be found: https://github.com/franroad/azure/tree/main/terraform
+I am currently finalizing the Terraform:
+
+with the desired resources, these can be found: https://github.com/franroad/azure/tree/main/terraform
 ````
 
 s
