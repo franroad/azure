@@ -8,7 +8,7 @@ Using the Terraform file the resources that I am deploying are the following:
 -VM (ansible)
 -AKS (persistent volume)
 ````
-##Prequisites (windows):
+## Prequisites (windows):
 -Az cli configured
 -Visual studio (Hasicorp terraform plugin) [optional]
 -Terraform
