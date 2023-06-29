@@ -60,7 +60,8 @@ Once we are logged we can proceed by renaming/tagging the imaghe and pushing it 
 ````
 podman tag docker.io/library/nginx:latest <myregistry.azurecr.io>/nginx:casopractico2
 
-> We are using the repository and the tag that we have noted previously and renaming it now we have to add out repository "login", a folder and a tag.
+> We are using the repository and the tag that we have noted previously for selecting the image and we are ranaming it like: "<myregistry.azurecr.io>/nginx:casopractico2"
+
 
 podman push acrlabfran.azurecr.io/nginx:casopractico2
 
