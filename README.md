@@ -22,11 +22,55 @@ Once we have created the main file, we can run ````terraform init ```` in the sa
 
 3- Run ````terraform plan```` to obtain a summary of the changes that terraform will apply in our project and ````terrafrom apply```` to proceed.
 
-4- if we check our project thriugth the UI we will be able to see that multiple resources have been created
+4- if we check our project thriugth the UI we will be able to see that multiple resources have been created, let's focus on the ACR.
+with podman installed in windows lets follow the nex steps to download a public image, rename it and upload it in a folder called nginx.
 
-```#0969DA python
+Open a power shell terminal:
+
+```#0969DA
+podman machine init
+
+podman machine start 
+
+podman pull nginx
+
+> No matter the image in this scenario,by default _latest_
+
+podman image ls
+> list the image that we have downloaded, jot down the _REPOSITORY_ and the _TAG_
 
 
 ````
+We got the image and we have the name of the repository and the tag it will be useful later.
 
-s
+Now in order to push this image in our ACR we need firs to login hence, we are gonna run the following command
+
+````
+podman login <myregistry.azurecr.io> 
+
+> This info can be found in he UI in ACR section in our container
+
+````
+We will be asked for our user and pass, this info can be found in the UI, _access keys_ section [1]
+
+[1].https://learn.microsoft.com/en-us/azure/container-registry/media/container-registry-authentication/auth-portal-01.png
+
+Once we are logged we can proceed by renaming/tagging the imaghe and pushing it to our repository.
+
+````
+podman tag docker.io/library/nginx:latest <myregistry.azurecr.io>/nginx:casopractico2
+
+> We are using the repository and the tag that we have noted previously and renaming it now we have to add out repository "login", a folder and a tag.
+
+podman push acrlabfran.azurecr.io/nginx:casopractico2
+
+>We have pushed the image to the repository.
+
+
+````
+Graphically the outoput of this process looks like this:
+
+
+
+
+
