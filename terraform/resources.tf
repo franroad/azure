@@ -172,6 +172,53 @@ resource "azurerm_linux_virtual_machine" "vm-web" {
 }
 
 
+#creamos la vm de ansible:
+
+resource "azurerm_linux_virtual_machine" "vm-ansible" {
+  name                  = "vm-ansible"
+  location              = var.location
+  resource_group_name   = var.rg_compute
+  network_interface_ids = [azurerm_network_interface.nic_ansible.id]
+  size                  = "Standard_B1ms"
+
+  os_disk {
+    name                 = "ansibleDisk"
+    caching              = "ReadWrite"
+    storage_account_type = "Premium_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-focal"
+    sku       = "20_04-lts"
+    version   = "latest"
+  }
+  
+# CON ESTA INYECTOS EL SCRIPT EN LA VM, the script can be found in this directory "ansible.sh":
+
+custom_data = filebase64("ansible.sh")# specify the directory in case it is not here
+
+
+
+
+#con esta config nos conectamos como azureuser a la VM con las claves generadas anteriormente en local
+  computer_name                   = "vm-ansible"
+  admin_username                  = "franky"
+  disable_password_authentication = true
+
+  admin_ssh_key {
+    username   = "franky"
+    public_key = file("C:/Users/Fran/.ssh/id_rsa.pub")
+  }
+  
+
+}
+
+
+
+
+
+
 
 
 
