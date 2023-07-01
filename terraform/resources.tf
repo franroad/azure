@@ -208,7 +208,7 @@ custom_data = filebase64("ansible.sh")# specify the directory in case it is not 
 
   admin_ssh_key {
     username   = "franky"
-    public_key = file("C:/Users/Fran/.ssh/id_rsa.pub")
+    public_key = file("C:/Users/Fran/.ssh/id_rsa")
   }
   
 
