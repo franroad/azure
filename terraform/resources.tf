@@ -100,7 +100,7 @@ resource "azurerm_network_interface" "nic_web" {
     ip_configuration {
         name = "nic-web-config"
         subnet_id=azurerm_subnet.subnet_prac2.id
-        private_ip_address_allocation = "Dynamic"
+        private_ip_address_allocation = "Static"
         public_ip_address_id = azurerm_public_ip.publicipweb.id
       
     }  
