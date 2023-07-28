@@ -1,4 +1,6 @@
 
+
+
 The idea of this undergoing project is to deploy different resources in azure using Terraform and then provide the software through Ansible.
 In this repo we can find a couple of folders:
 
@@ -7,6 +9,9 @@ Terraform:
 
 Ansible:
 ````
+
+#DIAGRAM:
+<img src="/path/to/img.jpg" alt="Alt text" title="Optional title">
 ## Prequisites (windows):
 -Az cli configured
 -Visual studio (Hasicorp terraform plugin) [optional]
