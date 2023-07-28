@@ -11,7 +11,7 @@ Ansible:
 ````
 
 #DIAGRAM:
-<img src="/path/to/img.jpg" alt="Alt text" title="Optional title">
+<img src="https://github.com/franroad/azure/blob/main/PRAC_2.drawio(2).png" alt="Alt text" title="Optional title">
 ## Prequisites (windows):
 -Az cli configured
 -Visual studio (Hasicorp terraform plugin) [optional]
