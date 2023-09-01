@@ -48,7 +48,9 @@ Once connected let's continue by accessing the database we have prvopusy created
 -connect [db name];
 
 ### creating a table###
-``` ruby
+
+```
+ruby
 CREATE TABLE products(
     product_name varchar(255),
     price decimal(6,2)
