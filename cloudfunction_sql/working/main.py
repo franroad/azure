@@ -1,5 +1,7 @@
-import sqlalchemy
 #info =https://codelabs.developers.google.com/codelabs/connecting-to-cloud-sql-with-cloud-functions#2
+#info https://colab.sandbox.google.com/github/GoogleCloudPlatform/cloud-sql-python-connector/blob/main/samples/notebooks/mysql_python_connector.ipynb#scrollTo=D3xMRsBl3Ihl
+
+import sqlalchemy
 db_user="fran"
 db_password="1231"
 db1="products"
