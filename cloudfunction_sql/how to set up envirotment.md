@@ -7,9 +7,12 @@ gcloud auth login --> choosing the account which we want to operate
 gcloud config set project PROJECT_ID --> setting the project we are going to use.
 
 
+
+
 SETING UP AND CONNECTING TO THE DB
 
 ######################################
+gcloud sql instances describe fran-sql[instance name]#para obtener el nombre de la instancia SQL "instance connection name"
 
 Conection name: test-policy-356412:us-central1:fran-sql
 
@@ -33,7 +36,7 @@ in the folder that later will be used by the client:
 ./cloud-sql-proxy --unix-socket /home/franciscobe/cloudsql --credentials-file ./test-policy-356412-12dde9f74ec7.json test-policy-356412:us-central1:fran-sql
 
 
-gcloud sql instances describe test-policy-356412:us-central1:fran-sql #para obtener el nombre de la instancia SQL "instance connection name"
+
 
 5- en la carpeta que hemos creado (sql) se hahabra creado un string debemos usarlo para la conexion:
 nos pedira la pass que hemos metido para root al crear la db
