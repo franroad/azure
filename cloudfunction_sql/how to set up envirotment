@@ -48,7 +48,7 @@ Once connected let's continue by accessing the database we have prvopusy created
 -connect [db name];
 
 ### creating a table###
-
+```
 CREATE TABLE products(
     product_name varchar(255),
     price decimal(6,2)
@@ -62,6 +62,6 @@ INSERT INTO products VALUES
 ('f800r',6500),
 ('carrots',0.80);
 
-
+```
 
 
