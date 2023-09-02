@@ -2,11 +2,11 @@ https://codelabs.developers.google.com/codelabs/connecting-to-cloud-sql-with-clo
 
 https://colab.sandbox.google.com/github/GoogleCloudPlatform/cloud-sql-python-connector/blob/main/samples/notebooks/mysql_python_connector.ipynb#scrollTo=D3xMRsBl3Ihl
 
-#The files contains the follwing:
-aaa aa aa
+# The files contains the follwing:
+
 
 ```python
-"main.py" --> A Select
+**main.py** --> A Select
 
 "main_insert.py"--> An insert
 
