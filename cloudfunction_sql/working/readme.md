@@ -6,9 +6,9 @@ https://colab.sandbox.google.com/github/GoogleCloudPlatform/cloud-sql-python-con
 
 
 ```python
-**main.py** --> A Select
+"main.py" --> A Select towards the DB
 
-"main_insert.py"--> An insert
+"main_insert.py"--> An insert towards the DB
 
 "main_os.py"--> same as [main.py] but importing os library to pass the password as Env variable, this should be also configured in the cloud function setup.
 
